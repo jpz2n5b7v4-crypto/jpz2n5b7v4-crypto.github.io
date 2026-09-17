@@ -1,1280 +1,503 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLACK ROOM — Барбершоп Киев</title>
-
+<title>BLACK ROOM — Barbershop Kyiv</title>
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#0b0b0b;
-  color:#fff;
-  line-height:1.5;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button,
-input,
-select,
-textarea{
-  font:inherit;
-}
-
-.container{
-  width:min(1100px,92%);
-  margin:auto;
-}
-
-header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:1000;
-  background:rgba(10,10,10,.92);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid #222;
-}
-
-.nav{
-  height:75px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  font-size:24px;
-  font-weight:900;
-  letter-spacing:4px;
-}
-
-.nav-links{
-  display:flex;
-  gap:30px;
-}
-
-.nav-links a{
-  font-size:14px;
-  color:#bbb;
-  transition:.3s;
-}
-
-.nav-links a:hover{
-  color:#fff;
-}
-
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding-top:75px;
-  background:
-    radial-gradient(circle at 70% 40%,#252525 0%,#111 35%,#080808 70%);
-}
-
-.hero-content{
-  max-width:720px;
-}
-
-.hero-small{
-  color:#999;
-  font-size:13px;
-  letter-spacing:4px;
-  margin-bottom:20px;
-}
-
-.hero h1{
-  font-size:clamp(55px,10vw,110px);
-  line-height:.9;
-  letter-spacing:-5px;
-  margin-bottom:30px;
-}
-
-.hero p{
-  color:#aaa;
-  font-size:18px;
-  max-width:550px;
-  margin-bottom:35px;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:52px;
-  padding:0 28px;
-  border:1px solid #fff;
-  background:#fff;
-  color:#000;
-  font-weight:700;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.btn:hover{
-  background:#000;
-  color:#fff;
-}
-
-section{
-  padding:100px 0;
-}
-
-.section-title{
-  font-size:42px;
-  margin-bottom:45px;
-  letter-spacing:-1px;
-}
-
-.section-title span{
-  color:#666;
-}
-
-.about-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-}
-
-.about-text{
-  color:#aaa;
-  font-size:17px;
-}
-
-.about-text p{
-  margin-bottom:20px;
-}
-
-.about-card{
-  min-height:280px;
-  background:linear-gradient(145deg,#202020,#0f0f0f);
-  border:1px solid #292929;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:70px;
-  font-weight:900;
-  letter-spacing:8px;
-  color:#222;
-}
-
-.services{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-}
-
-.service{
-  padding:28px;
-  background:#111;
-  border:1px solid #242424;
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  transition:.3s;
-}
-
-.service:hover{
-  border-color:#555;
-  transform:translateY(-3px);
-}
-
-.service h3{
-  margin-bottom:5px;
-}
-
-.service p{
-  color:#777;
-  font-size:14px;
-}
-
-.price{
-  white-space:nowrap;
-  font-size:20px;
-  font-weight:700;
-}
-
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-
-.gallery-item{
-  aspect-ratio:1/1;
-  background:linear-gradient(135deg,#252525,#101010);
-  border:1px solid #252525;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#444;
-  font-size:13px;
-  letter-spacing:2px;
-}
-
-.advantages{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-
-.advantage{
-  background:#111;
-  border:1px solid #242424;
-  padding:30px;
-}
-
-.advantage-number{
-  color:#555;
-  font-size:13px;
-  margin-bottom:25px;
-}
-
-.advantage h3{
-  margin-bottom:10px;
-}
-
-.advantage p{
-  color:#777;
-}
-
-.reviews{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-
-.review{
-  background:#111;
-  border:1px solid #242424;
-  padding:30px;
-}
-
-.stars{
-  margin-bottom:20px;
-  letter-spacing:3px;
-}
-
-.review p{
-  color:#aaa;
-  margin-bottom:20px;
-}
-
-.review strong{
-  font-size:14px;
-}
-
-.contacts{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
-.contact-box{
-  background:#111;
-  border:1px solid #242424;
-  padding:30px;
-}
-
-.contact-box span{
-  display:block;
-  color:#666;
-  font-size:13px;
-  margin-bottom:8px;
-}
-
-.contact-box a{
-  font-size:20px;
-}
-
-.cta{
-  text-align:center;
-  background:#111;
-  border-top:1px solid #222;
-  border-bottom:1px solid #222;
-}
-
-.cta h2{
-  font-size:50px;
-  margin-bottom:20px;
-}
-
-.cta p{
-  color:#777;
-  margin-bottom:30px;
-}
-
-footer{
-  padding:35px 0;
-  color:#555;
-  font-size:13px;
-}
-
-.footer-inner{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.modal{
-  position:fixed;
-  inset:0;
-  z-index:2000;
-  background:rgba(0,0,0,.8);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.modal.active{
-  display:flex;
-}
-
-.modal-box{
-  width:min(520px,100%);
-  max-height:90vh;
-  overflow:auto;
-  background:#111;
-  border:1px solid #333;
-  padding:35px;
-  position:relative;
-}
-
-.modal-box h2{
-  font-size:30px;
-  margin-bottom:10px;
-}
-
-.modal-subtitle{
-  color:#777;
-  margin-bottom:25px;
-}
-
-.close{
-  position:absolute;
-  top:15px;
-  right:18px;
-  background:none;
-  border:0;
-  color:#aaa;
-  font-size:30px;
-  cursor:pointer;
-}
-
-.form-group{
-  margin-bottom:16px;
-}
-
-.form-group label{
-  display:block;
-  color:#aaa;
-  font-size:13px;
-  margin-bottom:7px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea{
-  width:100%;
-  padding:14px;
-  background:#090909;
-  color:#fff;
-  border:1px solid #333;
-  outline:none;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-  border-color:#777;
-}
-
-.form-group textarea{
-  min-height:90px;
-  resize:vertical;
-}
-
-.submit{
-  width:100%;
-  margin-top:5px;
-}
-
-.submit:disabled{
-  opacity:.6;
-  cursor:not-allowed;
-}
-
-.success{
-  display:none;
-  text-align:center;
-  padding:50px 10px;
-}
-
-.success-icon{
-  font-size:50px;
-  margin-bottom:20px;
-}
-
-.success h3{
-  font-size:28px;
-  margin-bottom:10px;
-}
-
-.success p{
-  color:#777;
-}
-
-@media(max-width:800px){
-
-  .nav-links{
-    display:none;
-  }
-
-  .hero h1{
-    letter-spacing:-3px;
-  }
-
-  .about-grid,
-  .contacts{
-    grid-template-columns:1fr;
-  }
-
-  .services,
-  .gallery,
-  .advantages,
-  .reviews{
-    grid-template-columns:1fr;
-  }
-
-  .section-title{
-    font-size:34px;
-  }
-
-  .cta h2{
-    font-size:36px;
-  }
-
-  .footer-inner{
-    flex-direction:column;
-  }
-}
-
-@media(max-width:500px){
-
-  section{
-    padding:75px 0;
-  }
-
-  .modal-box{
-    padding:25px 20px;
-  }
-
-  .hero{
-    min-height:90vh;
-  }
-
-  .hero h1{
-    font-size:58px;
-  }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#080808;color:#f5f5f5;line-height:1.5}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+:root{--black:#080808;--dark:#101010;--card:#151515;--line:#292929;--white:#f5f5f5;--gray:#8c8c8c;--acid:#d9ff3f}
+.container{width:min(1180px,calc(100% - 40px));margin:0 auto}
+
+.header{position:fixed;top:0;left:0;right:0;height:76px;z-index:1000;background:rgba(8,8,8,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:21px;font-weight:900;letter-spacing:4px}
+.logo span{color:var(--acid)}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:13px;color:#aaa;transition:.25s}
+.nav-links a:hover{color:#fff}
+.nav-booking{color:#000!important;background:var(--acid);padding:11px 18px;border:1px solid var(--acid)}
+.nav-booking:hover{background:transparent;color:var(--acid)!important}
+
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 80% 40%,rgba(217,255,63,.1),transparent 25%),radial-gradient(circle at 15% 80%,rgba(255,255,255,.04),transparent 30%),#080808}
+.hero:after{content:"";position:absolute;width:650px;height:650px;border:1px solid rgba(217,255,63,.09);border-radius:50%;right:-250px;top:12%}
+.hero-content{position:relative;z-index:2;padding-top:60px}
+.eyebrow{color:var(--acid);font-size:11px;letter-spacing:4px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(65px,12vw,150px);line-height:.82;letter-spacing:-8px;font-weight:900}
+.hero h1 span{color:transparent;-webkit-text-stroke:1px #fff}
+.hero-description{max-width:530px;color:#929292;font-size:17px;margin:35px 0}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;justify-content:center;align-items:center;min-height:50px;padding:0 27px;background:var(--acid);color:#000;border:1px solid var(--acid);font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;transition:.25s}
+.btn:hover{background:transparent;color:var(--acid)}
+.btn-outline{background:transparent;color:#fff;border-color:#444}
+.btn-outline:hover{background:#fff;color:#000;border-color:#fff}
+.scroll{position:absolute;bottom:30px;left:20px;color:#555;font-size:10px;letter-spacing:3px}
+
+section{padding:120px 0}
+.section-number{color:var(--acid);font-size:10px;letter-spacing:3px;margin-bottom:14px}
+.section-title{font-size:clamp(42px,7vw,78px);line-height:.95;letter-spacing:-4px}
+.section-description{max-width:570px;color:var(--gray);margin-top:20px}
+.section-header{margin-bottom:55px}
+
+.about{background:#0d0d0d}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-lead{font-size:clamp(28px,4vw,48px);line-height:1.08;font-weight:700}
+.about-lead span{color:var(--acid)}
+.about-text{color:#858585;margin-top:25px;max-width:550px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{min-height:170px;padding:25px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}
+.stat strong{font-size:42px}
+.stat span{color:#777;font-size:10px;letter-spacing:1.5px}
+
+.services{background:#080808}
+.services-list{border-top:1px solid var(--line)}
+.service{display:grid;grid-template-columns:60px 1fr auto;align-items:center;gap:25px;padding:28px 10px;border-bottom:1px solid var(--line);transition:.25s}
+.service:hover{background:#111;padding-left:20px;padding-right:20px}
+.service-number{color:#555;font-size:12px}
+.service-name{font-size:21px;font-weight:600}
+.service-price{color:var(--acid);font-size:20px;font-weight:800}
+
+.gallery{background:#0d0d0d}
+.gallery-grid{display:grid;grid-template-columns:1.1fr .9fr 1fr;grid-template-rows:260px 260px;gap:12px}
+.gallery-item{position:relative;overflow:hidden;border:1px solid #252525;background:radial-gradient(circle at 60% 35%,#4a4a4a 0%,transparent 18%),linear-gradient(145deg,#303030,#0a0a0a 65%)}
+.gallery-item:nth-child(2){background:radial-gradient(circle at 40% 45%,#555 0%,transparent 17%),linear-gradient(35deg,#080808,#3b3b3b,#0b0b0b)}
+.gallery-item:nth-child(3){background:radial-gradient(circle at 65% 30%,#555 0%,transparent 15%),linear-gradient(135deg,#090909,#383838,#111)}
+.gallery-item:nth-child(4){background:radial-gradient(circle at 30% 50%,#505050 0%,transparent 17%),linear-gradient(35deg,#393939,#080808 70%)}
+.gallery-item:nth-child(5){background:radial-gradient(circle at 70% 40%,#555 0%,transparent 18%),linear-gradient(145deg,#101010,#444,#080808)}
+.gallery-item:nth-child(6){background:radial-gradient(circle at 45% 35%,#4d4d4d 0%,transparent 18%),linear-gradient(110deg,#363636,#0a0a0a)}
+.gallery-item:first-child{grid-row:span 2}
+.gallery-item:nth-child(4){grid-column:span 2}
+.gallery-overlay{position:absolute;left:0;right:0;bottom:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,.9))}
+.gallery-overlay span{color:var(--acid);font-size:10px;letter-spacing:2px}
+
+.advantages{background:#080808}
+.advantages-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.advantage{min-height:250px;padding:28px;background:#111;border:1px solid var(--line)}
+.advantage-icon{width:43px;height:43px;border:1px solid #444;color:var(--acid);display:flex;justify-content:center;align-items:center;font-size:11px;margin-bottom:55px}
+.advantage h3{font-size:18px;margin-bottom:12px}
+.advantage p{color:#777;font-size:13px}
+
+.reviews{background:#0d0d0d}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.review{padding:30px;background:#141414;border:1px solid #242424}
+.stars{color:var(--acid);letter-spacing:3px;margin-bottom:25px}
+.review-text{font-size:17px;line-height:1.55;margin-bottom:30px}
+.review-author{color:#777;font-size:11px;letter-spacing:1px}
+
+.contacts{background:#080808}
+.contacts-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.contact-item{padding:0 0 24px;margin-bottom:24px;border-bottom:1px solid var(--line)}
+.contact-label{color:#666;font-size:9px;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.contact-value{font-size:19px}
+.socials{display:flex;gap:10px}
+.social{padding:13px 18px;border:1px solid #333;font-size:11px;text-transform:uppercase;letter-spacing:1px;transition:.25s}
+.social:hover{border-color:var(--acid);color:var(--acid)}
+.map{min-height:390px;position:relative;overflow:hidden;border:1px solid #242424;background:repeating-linear-gradient(45deg,#101010 0,#101010 24px,#151515 24px,#151515 25px);display:flex;align-items:center;justify-content:center}
+.map-line{position:absolute;width:130%;height:1px;background:#292929;transform:rotate(32deg)}
+.map-line.two{transform:rotate(-35deg)}
+.map-point{position:relative;z-index:2;width:90px;height:90px;border-radius:50%;background:var(--acid);color:#000;display:flex;justify-content:center;align-items:center;text-align:center;font-weight:900;font-size:10px;box-shadow:0 0 0 15px rgba(217,255,63,.08)}
+
+.cta{background:var(--acid);color:#000;text-align:center;padding:100px 20px}
+.cta h2{font-size:clamp(48px,9vw,105px);line-height:.88;letter-spacing:-6px;margin-bottom:35px}
+.cta .btn{background:#000;border-color:#000;color:#fff}
+.cta .btn:hover{background:transparent;color:#000}
+
+.footer{padding:30px 0;background:#050505;border-top:1px solid #151515}
+.footer-content{display:flex;justify-content:space-between;color:#555;font-size:11px}
+
+.modal{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.modal.active{display:flex}
+.modal-box{width:min(500px,100%);max-height:90vh;overflow-y:auto;position:relative;background:#111;border:1px solid #333;padding:35px}
+.modal-close{position:absolute;right:16px;top:12px;border:none;background:transparent;color:#777;font-size:30px}
+.modal-close:hover{color:#fff}
+.modal h2{font-size:32px;margin-bottom:8px}
+.modal-description{color:#777;font-size:13px;margin-bottom:28px}
+.form-group{margin-bottom:17px}
+.form-group label{display:block;color:#777;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:13px;color:#fff;background:#080808;border:1px solid #333;border-radius:0;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--acid)}
+.form-group textarea{min-height:80px;resize:vertical}
+.submit{width:100%;margin-top:5px}
+.success{display:none;text-align:center;padding:30px 10px}
+.success-icon{width:60px;height:60px;margin:0 auto 20px;border-radius:50%;background:var(--acid);color:#000;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900}
+.success h3{font-size:25px;margin-bottom:8px}
+.success p{color:#777}
+
+@media(max-width:900px){
+.nav-links a:not(.nav-booking){display:none}
+.about-grid,.contacts-grid{grid-template-columns:1fr;gap:45px}
+.advantages-grid{grid-template-columns:1fr 1fr}
+.reviews-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:600px){
+.container{width:calc(100% - 28px)}
+.header{height:68px}
+.logo{font-size:17px;letter-spacing:3px}
+.nav-booking{padding:9px 12px!important;font-size:9px!important}
+.hero{min-height:92vh}
+.hero h1{font-size:19vw;letter-spacing:-5px}
+.hero-description{font-size:15px;margin:28px 0}
+section{padding:80px 0}
+.section-title{letter-spacing:-2px}
+.stats{gap:8px}
+.stat{min-height:130px;padding:18px}
+.stat strong{font-size:32px}
+.service{grid-template-columns:30px 1fr auto;gap:9px;padding:22px 0}
+.service-name{font-size:14px}
+.service-price{font-size:14px}
+.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px;gap:8px}
+.gallery-item:first-child{grid-row:span 2}
+.gallery-item:nth-child(4){grid-column:span 2}
+.advantages-grid{grid-template-columns:1fr}
+.advantage{min-height:190px}
+.advantage-icon{margin-bottom:35px}
+.review{padding:24px}
+.review-text{font-size:15px}
+.map{min-height:280px}
+.footer-content{flex-direction:column;gap:10px;text-align:center}
+.modal-box{padding:28px 20px}
 }
 </style>
-
 </head>
 
 <body>
 
-<header>
-  <div class="container nav">
-
-```
-<a href="#home" class="logo">BLACK ROOM</a>
-
+<header class="header">
+<div class="container nav">
+<a href="#home" class="logo">BLACK<span>ROOM</span></a>
 <nav class="nav-links">
-  <a href="#about">О нас</a>
-  <a href="#services">Услуги</a>
-  <a href="#gallery">Галерея</a>
-  <a href="#reviews">Отзывы</a>
-  <a href="#contacts">Контакты</a>
+<a href="#about">О нас</a>
+<a href="#services">Услуги</a>
+<a href="#gallery">Работы</a>
+<a href="#reviews">Отзывы</a>
+<a href="#contacts">Контакты</a>
+<a href="#" class="nav-booking booking-open">Записаться</a>
 </nav>
-
-<button class="btn booking-open">ЗАПИСАТЬСЯ</button>
-```
-
-  </div>
+</div>
 </header>
 
 <main>
 
 <section class="hero" id="home">
-  <div class="container">
-    <div class="hero-content">
-
-```
-  <div class="hero-small">BARBERSHOP • KYIV</div>
-
-  <h1>BLACK<br>ROOM</h1>
-
-  <p>
-    Мужские стрижки, борода и стиль.
-    Без лишнего шума. Только точная работа.
-  </p>
-
-  <button class="btn booking-open">
-    ЗАПИСАТЬСЯ НА СТРИЖКУ
-  </button>
-
+<div class="container hero-content">
+<div class="eyebrow">BARBERSHOP · KYIV</div>
+<h1>BLACK<br><span>ROOM</span></h1>
+<p class="hero-description">Мужской барбершоп для тех, кто ценит стиль, точность и внимание к деталям.</p>
+<div class="buttons">
+<a href="#" class="btn booking-open">Записаться</a>
+<a href="#services" class="btn btn-outline">Услуги</a>
 </div>
-```
-
-  </div>
+</div>
+<div class="container scroll">SCROLL ↓</div>
 </section>
 
-<section id="about">
-  <div class="container">
-
-```
-<h2 class="section-title">
-  О <span>нас</span>
-</h2>
+<section class="about" id="about">
+<div class="container">
+<div class="section-header">
+<div class="section-number">01 / О НАС</div>
+<h2 class="section-title">НЕ ПРОСТО<br>СТРИЖКА.</h2>
+</div>
 
 <div class="about-grid">
-
-  <div class="about-text">
-
-    <p>
-      BLACK ROOM — современный мужской барбершоп
-      в Киеве для тех, кто ценит аккуратность,
-      стиль и хороший сервис.
-    </p>
-
-    <p>
-      Мы не делаем просто стрижку.
-      Мы подбираем образ под человека,
-      форму лица и индивидуальный стиль.
-    </p>
-
-    <p>
-      Минимализм в интерьере.
-      Максимум внимания к деталям.
-    </p>
-
-  </div>
-
-  <div class="about-card">
-    BR
-  </div>
-
+<div>
+<div class="about-lead">Мы создаём образ, который <span>говорит</span> за тебя.</div>
+<p class="about-text">BLACK ROOM — современный мужской барбершоп в Киеве. Чёткие линии, сильные мастера, профессиональная косметика и атмосфера, в которую хочется возвращаться.</p>
 </div>
-```
 
-  </div>
+<div class="stats">
+<div class="stat"><strong>5+</strong><span>ЛЕТ В ИНДУСТРИИ</span></div>
+<div class="stat"><strong>4</strong><span>МАСТЕРА</span></div>
+<div class="stat"><strong>2K+</strong><span>КЛИЕНТОВ</span></div>
+<div class="stat"><strong>5.0</strong><span>СРЕДНЯЯ ОЦЕНКА</span></div>
+</div>
+</div>
+</div>
 </section>
 
-<section id="services">
-  <div class="container">
-
-```
-<h2 class="section-title">
-  Услуги <span>и цены</span>
-</h2>
-
-<div class="services">
-
-  <div class="service">
-    <div>
-      <h3>Мужская стрижка</h3>
-      <p>Консультация + стрижка + укладка</p>
-    </div>
-    <div class="price">500 ₴</div>
-  </div>
-
-  <div class="service">
-    <div>
-      <h3>Стрижка + борода</h3>
-      <p>Комплексный уход</p>
-    </div>
-    <div class="price">700 ₴</div>
-  </div>
-
-  <div class="service">
-    <div>
-      <h3>Оформление бороды</h3>
-      <p>Форма + контуры</p>
-    </div>
-    <div class="price">300 ₴</div>
-  </div>
-
-  <div class="service">
-    <div>
-      <h3>Детская стрижка</h3>
-      <p>Для мальчиков до 12 лет</p>
-    </div>
-    <div class="price">400 ₴</div>
-  </div>
-
+<section class="services" id="services">
+<div class="container">
+<div class="section-header">
+<div class="section-number">02 / УСЛУГИ</div>
+<h2 class="section-title">ПРАЙС</h2>
+<p class="section-description">Никаких скрытых доплат. Выбирай услугу, приходи и получай результат.</p>
 </div>
-```
 
-  </div>
+<div class="services-list">
+<div class="service"><div class="service-number">01</div><div class="service-name">Мужская стрижка</div><div class="service-price">500 ₴</div></div>
+<div class="service"><div class="service-number">02</div><div class="service-name">Стрижка + борода</div><div class="service-price">700 ₴</div></div>
+<div class="service"><div class="service-number">03</div><div class="service-name">Оформление бороды</div><div class="service-price">300 ₴</div></div>
+<div class="service"><div class="service-number">04</div><div class="service-name">Детская стрижка</div><div class="service-price">400 ₴</div></div>
+</div>
+</div>
 </section>
 
-<section id="gallery">
-  <div class="container">
-
-```
-<h2 class="section-title">
-  Наша <span>атмосфера</span>
-</h2>
-
-<div class="gallery">
-
-  <div class="gallery-item">BLACK ROOM</div>
-  <div class="gallery-item">BLACK ROOM</div>
-  <div class="gallery-item">BLACK ROOM</div>
-  <div class="gallery-item">BLACK ROOM</div>
-  <div class="gallery-item">BLACK ROOM</div>
-  <div class="gallery-item">BLACK ROOM</div>
-
+<section class="gallery" id="gallery">
+<div class="container">
+<div class="section-header">
+<div class="section-number">03 / РАБОТЫ</div>
+<h2 class="section-title">BLACK<br>STYLE</h2>
+<p class="section-description">Примеры стиля BLACK ROOM.</p>
 </div>
-```
 
-  </div>
+<div class="gallery-grid">
+<div class="gallery-item"><div class="gallery-overlay"><span>WORK 01</span></div></div>
+<div class="gallery-item"><div class="gallery-overlay"><span>WORK 02</span></div></div>
+<div class="gallery-item"><div class="gallery-overlay"><span>WORK 03</span></div></div>
+<div class="gallery-item"><div class="gallery-overlay"><span>WORK 04</span></div></div>
+<div class="gallery-item"><div class="gallery-overlay"><span>WORK 05</span></div></div>
+<div class="gallery-item"><div class="gallery-overlay"><span>WORK 06</span></div></div>
+</div>
+</div>
 </section>
 
-<section>
-  <div class="container">
-
-```
-<h2 class="section-title">
-  Почему <span>мы</span>
-</h2>
-
-<div class="advantages">
-
-  <div class="advantage">
-    <div class="advantage-number">01</div>
-    <h3>Опыт</h3>
-    <p>
-      Барберы, которые знают,
-      как работать с разными типами волос.
-    </p>
-  </div>
-
-  <div class="advantage">
-    <div class="advantage-number">02</div>
-    <h3>Атмосфера</h3>
-    <p>
-      Спокойное пространство,
-      где можно расслабиться.
-    </p>
-  </div>
-
-  <div class="advantage">
-    <div class="advantage-number">03</div>
-    <h3>Результат</h3>
-    <p>
-      Внимание к форме,
-      деталям и финальной укладке.
-    </p>
-  </div>
-
+<section class="advantages">
+<div class="container">
+<div class="section-header">
+<div class="section-number">04 / ПОЧЕМУ МЫ</div>
+<h2 class="section-title">НАША<br>ФИЛОСОФИЯ</h2>
 </div>
-```
 
-  </div>
+<div class="advantages-grid">
+<div class="advantage"><div class="advantage-icon">01</div><h3>Точные линии</h3><p>Работаем до мельчайших деталей. Контуры и форма всегда на первом месте.</p></div>
+<div class="advantage"><div class="advantage-icon">02</div><h3>Сильные мастера</h3><p>Каждый мастер специализируется на мужских стрижках и бороде.</p></div>
+<div class="advantage"><div class="advantage-icon">03</div><h3>Атмосфера</h3><p>Тёмный интерьер, музыка, кофе и отсутствие лишней суеты.</p></div>
+<div class="advantage"><div class="advantage-icon">04</div><h3>Качество</h3><p>Используем профессиональную косметику и оборудование.</p></div>
+</div>
+</div>
 </section>
 
-<section id="reviews">
-  <div class="container">
-
-```
-<h2 class="section-title">
-  Что говорят <span>клиенты</span>
-</h2>
-
-<div class="reviews">
-
-  <div class="review">
-    <div class="stars">★★★★★</div>
-    <p>
-      Очень понравилось. Барбер сразу понял,
-      что я хочу. Стрижка получилась именно такой,
-      как представлял.
-    </p>
-    <strong>Александр</strong>
-  </div>
-
-  <div class="review">
-    <div class="stars">★★★★★</div>
-    <p>
-      Хорошая атмосфера, приятный персонал.
-      Теперь буду ходить сюда постоянно.
-    </p>
-    <strong>Максим</strong>
-  </div>
-
-  <div class="review">
-    <div class="stars">★★★★★</div>
-    <p>
-      Делал стрижку и бороду.
-      Всё аккуратно и без спешки.
-      Результатом доволен.
-    </p>
-    <strong>Дмитрий</strong>
-  </div>
-
+<section class="reviews" id="reviews">
+<div class="container">
+<div class="section-header">
+<div class="section-number">05 / ОТЗЫВЫ</div>
+<h2 class="section-title">ЧТО ГОВОРЯТ</h2>
 </div>
-```
 
-  </div>
+<div class="reviews-grid">
+<div class="review"><div class="stars">★★★★★</div><p class="review-text">«Наконец-то нашёл место, где не приходится объяснять мастеру по 20 минут, что именно я хочу. Сделали идеально.»</p><div class="review-author">— АНДРЕЙ, КИЕВ</div></div>
+<div class="review"><div class="stars">★★★★★</div><p class="review-text">«Очень приятная атмосфера. Стрижка, борода — всё аккуратно. Теперь хожу только сюда.»</p><div class="review-author">— МАКСИМ, КИЕВ</div></div>
+<div class="review"><div class="stars">★★★★★</div><p class="review-text">«Понравилось буквально всё: от записи до результата. Мастер реально знает, что делает.»</p><div class="review-author">— ДЕНИС, КИЕВ</div></div>
+</div>
+</div>
 </section>
 
-<section id="contacts">
-  <div class="container">
-
-```
-<h2 class="section-title">
-  Контакты
-</h2>
-
-<div class="contacts">
-
-  <div class="contact-box">
-    <span>АДРЕС</span>
-    <div>Киев, Украина</div>
-  </div>
-
-  <div class="contact-box">
-    <span>ТЕЛЕФОН</span>
-    <a href="tel:+380000000000">
-      +38 (000) 000-00-00
-    </a>
-  </div>
-
-  <div class="contact-box">
-    <span>INSTAGRAM</span>
-    <a href="#" target="_blank">
-      @blackroom
-    </a>
-  </div>
-
-  <div class="contact-box">
-    <span>TELEGRAM</span>
-    <a href="#" target="_blank">
-      @blackroom
-    </a>
-  </div>
-
+<section class="contacts" id="contacts">
+<div class="container">
+<div class="section-header">
+<div class="section-number">06 / КОНТАКТЫ</div>
+<h2 class="section-title">ЖДЁМ ТЕБЯ</h2>
 </div>
-```
 
-  </div>
+<div class="contacts-grid">
+<div>
+<div class="contact-item">
+<div class="contact-label">Адрес</div>
+<div class="contact-value">Киев, ул. Большая Васильковская, 72</div>
+</div>
+
+<div class="contact-item">
+<div class="contact-label">График</div>
+<div class="contact-value">Пн — Сб: 10:00 — 21:00<br>Вс: 11:00 — 19:00</div>
+</div>
+
+<div class="contact-item">
+<div class="contact-label">Телефон</div>
+<div class="contact-value">+380 67 000 00 00</div>
+</div>
+
+<div class="socials">
+<a href="https://instagram.com/" target="_blank" class="social">Instagram</a>
+<a href="https://t.me/" target="_blank" class="social">Telegram</a>
+</div>
+</div>
+
+<div class="map">
+<div class="map-line"></div>
+<div class="map-line two"></div>
+<div class="map-point">BLACK<br>ROOM</div>
+</div>
+</div>
+</div>
 </section>
 
 <section class="cta">
-
-  <div class="container">
-
-```
-<h2>ГОТОВ К НОВОМУ ОБРАЗУ?</h2>
-
-<p>
-  Забронируй удобное время прямо сейчас.
-</p>
-
-<button class="btn booking-open">
-  ЗАПИСАТЬСЯ
-</button>
-```
-
-  </div>
-
+<div class="container">
+<h2>ГОТОВ<br>ОБНОВИТЬСЯ?</h2>
+<a href="#" class="btn booking-open">Записаться на стрижку</a>
+</div>
 </section>
 
 </main>
 
-<footer>
-  <div class="container footer-inner">
-
-```
-<div>
-  © <span id="year"></span> BLACK ROOM
+<footer class="footer">
+<div class="container footer-content">
+<div>© <span id="year"></span> BLACK ROOM</div>
+<div>BARBERSHOP · KYIV</div>
 </div>
-
-<div>
-  Kyiv • Barbershop
-</div>
-```
-
-  </div>
 </footer>
 
 <div class="modal" id="modal">
+<div class="modal-box">
 
-  <div class="modal-box">
-
-```
-<button class="close" id="closeModal">
-  ×
-</button>
+<button class="modal-close" id="closeModal">×</button>
 
 <div id="formContainer">
+<h2>Записаться</h2>
+<p class="modal-description">Оставь контакты — мы свяжемся с тобой для подтверждения записи.</p>
 
-  <h2>Запись</h2>
+<form id="bookingForm">
 
-  <div class="modal-subtitle">
-    Оставь данные — мы свяжемся с тобой
-    для подтверждения записи.
-  </div>
+<div class="form-group">
+<label for="name">Имя</label>
+<input type="text" id="name" placeholder="Как тебя зовут?" required>
+</div>
 
-  <form id="bookingForm">
+<div class="form-group">
+<label for="phone">Телефон</label>
+<input type="tel" id="phone" placeholder="+380..." required>
+</div>
 
-    <div class="form-group">
-      <label for="name">ИМЯ</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        placeholder="Твоё имя"
-        required
-      >
-    </div>
+<div class="form-group">
+<label for="service">Услуга</label>
+<select id="service" required>
+<option value="">Выбери услугу</option>
+<option>Мужская стрижка — 500 грн</option>
+<option>Стрижка + борода — 700 грн</option>
+<option>Оформление бороды — 300 грн</option>
+<option>Детская стрижка — 400 грн</option>
+</select>
+</div>
 
-    <div class="form-group">
-      <label for="phone">ТЕЛЕФОН</label>
-      <input
-        type="tel"
-        id="phone"
-        name="phone"
-        placeholder="+380..."
-        required
-      >
-    </div>
+<div class="form-group">
+<label for="date">Дата</label>
+<input type="date" id="date" required>
+</div>
 
-    <div class="form-group">
-      <label for="service">УСЛУГА</label>
+<div class="form-group">
+<label for="time">Время</label>
+<select id="time" required>
+<option value="">Выбери время</option>
+<option>10:00</option>
+<option>11:00</option>
+<option>12:00</option>
+<option>13:00</option>
+<option>14:00</option>
+<option>15:00</option>
+<option>16:00</option>
+<option>17:00</option>
+<option>18:00</option>
+<option>19:00</option>
+<option>20:00</option>
+</select>
+</div>
 
-      <select id="service" name="service" required>
+<div class="form-group">
+<label for="comment">Комментарий</label>
+<textarea id="comment" placeholder="Например: хочу фейд + оформление бороды"></textarea>
+</div>
 
-        <option value="">
-          Выбери услугу
-        </option>
+<button type="submit" class="btn submit">Отправить заявку</button>
 
-        <option value="Мужская стрижка">
-          Мужская стрижка — 500 ₴
-        </option>
-
-        <option value="Стрижка + борода">
-          Стрижка + борода — 700 ₴
-        </option>
-
-        <option value="Оформление бороды">
-          Оформление бороды — 300 ₴
-        </option>
-
-        <option value="Детская стрижка">
-          Детская стрижка — 400 ₴
-        </option>
-
-      </select>
-    </div>
-
-    <div class="form-group">
-
-      <label for="date">ДАТА</label>
-
-      <input
-        type="date"
-        id="date"
-        name="date"
-        required
-      >
-
-    </div>
-
-    <div class="form-group">
-
-      <label for="time">ВРЕМЯ</label>
-
-      <select id="time" name="time" required>
-
-        <option value="">
-          Выбери время
-        </option>
-
-        <option value="10:00">10:00</option>
-        <option value="11:00">11:00</option>
-        <option value="12:00">12:00</option>
-        <option value="13:00">13:00</option>
-        <option value="14:00">14:00</option>
-        <option value="15:00">15:00</option>
-        <option value="16:00">16:00</option>
-        <option value="17:00">17:00</option>
-        <option value="18:00">18:00</option>
-        <option value="19:00">19:00</option>
-        <option value="20:00">20:00</option>
-
-      </select>
-
-    </div>
-
-    <div class="form-group">
-
-      <label for="comment">
-        КОММЕНТАРИЙ
-      </label>
-
-      <textarea
-        id="comment"
-        name="comment"
-        placeholder="Например: хочу короткую стрижку по бокам..."
-      ></textarea>
-
-    </div>
-
-    <button
-      type="submit"
-      class="btn submit"
-    >
-      ОТПРАВИТЬ ЗАЯВКУ
-    </button>
-
-  </form>
-
+</form>
 </div>
 
 <div class="success" id="success">
-
-  <div class="success-icon">✓</div>
-
-  <h3>Заявка отправлена</h3>
-
-  <p>
-    Спасибо! Мы получили твою заявку
-    и свяжемся с тобой для подтверждения.
-  </p>
+<div class="success-icon">✓</div>
+<h3>Заявка отправлена</h3>
+<p>Мы получили твою заявку и скоро свяжемся с тобой для подтверждения.</p>
+</div>
 
 </div>
-```
-
-  </div>
-
 </div>
 
 <script>
+document.getElementById("year").textContent=new Date().getFullYear();
 
-document.getElementById("year").textContent =
-  new Date().getFullYear();
+const modal=document.getElementById("modal");
+const closeModalButton=document.getElementById("closeModal");
+const bookingButtons=document.querySelectorAll(".booking-open");
+const form=document.getElementById("bookingForm");
+const formContainer=document.getElementById("formContainer");
+const success=document.getElementById("success");
+const dateInput=document.getElementById("date");
 
-
-const modal =
-  document.getElementById("modal");
-
-const closeModalButton =
-  document.getElementById("closeModal");
-
-const bookingButtons =
-  document.querySelectorAll(".booking-open");
-
-const form =
-  document.getElementById("bookingForm");
-
-const formContainer =
-  document.getElementById("formContainer");
-
-const success =
-  document.getElementById("success");
-
-const dateInput =
-  document.getElementById("date");
-
-
-const scriptURL =
-  "https://script.google.com/macros/s/AKfycbzB7xFjckpaCUFmst-kjYzfSJq0y_XLB2KvW1arxw15piYHcCWMcuZOIxcemFeIOfQ/exec";
-
+const scriptURL="https://script.google.com/macros/s/AKfycbzB7xFjckpaCUFmst-kjYzfSJq0y_XLB2KvW1arxw15piYHcCWMcuZOIxcemFeIOfQ/exec";
 
 function openModal(event){
+if(event)event.preventDefault();
+modal.classList.add("active");
+@@ -459,55 +461,56 @@
+form.addEventListener("submit",function(event){
+event.preventDefault();
 
-  if(event){
-    event.preventDefault();
-  }
+const booking={
+name:document.getElementById("name").value,
+phone:document.getElementById("phone").value,
+service:document.getElementById("service").value,
+date:document.getElementById("date").value,
+time:document.getElementById("time").value,
+comment:document.getElementById("comment").value,
+created:new Date().toISOString()
+};
 
-  modal.classList.add("active");
+const bookings=JSON.parse(localStorage.getItem("blackRoomBookings")||"[]");
+bookings.push(booking);
+localStorage.setItem("blackRoomBookings",JSON.stringify(bookings));
+const data=new URLSearchParams();
 
-  document.body.style.overflow = "hidden";
+data.append("name",document.getElementById("name").value);
+data.append("phone",document.getElementById("phone").value);
+data.append("service",document.getElementById("service").value);
+data.append("date",document.getElementById("date").value);
+data.append("time",document.getElementById("time").value);
+data.append("comment",document.getElementById("comment").value);
 
-}
-
-
-function closeModal(){
-
-  modal.classList.remove("active");
-
-  document.body.style.overflow = "";
-
-}
-
-
-bookingButtons.forEach(function(button){
-
-  button.addEventListener(
-    "click",
-    openModal
-  );
-
+fetch(scriptURL,{
+method:"POST",
+body:data,
+mode:"no-cors"
 });
 
+formContainer.style.display="none";
+success.style.display="block";
 
-closeModalButton.addEventListener(
-  "click",
-  closeModal
-);
+setTimeout(function(){
+closeModal();
 
+setTimeout(function(){
+form.reset();
+formContainer.style.display="block";
+success.style.display="none";
+},300);
 
-modal.addEventListener(
-  "click",
-  function(event){
+},3000);
+});
 
-    if(event.target === modal){
+document.querySelectorAll('a[href^="#"]').forEach(function(link){
+link.addEventListener("click",function(event){
 
-      closeModal();
+const targetId=this.getAttribute("href");
 
-    }
+if(!targetId||targetId==="#")return;
 
-  }
-);
+const target=document.querySelector(targetId);
 
+if(!target)return;
 
-document.addEventListener(
-  "keydown",
-  function(event){
+event.preventDefault();
 
-    if(event.key === "Escape"){
-
-      closeModal();
-
-    }
-
-  }
-);
-
-
-const now = new Date();
-
-
-const today =
-  now.getFullYear() +
-  "-" +
-  String(now.getMonth() + 1).padStart(2,"0") +
-  "-" +
-  String(now.getDate()).padStart(2,"0");
-
-
-dateInput.min = today;
-
-
-form.addEventListener(
-  "submit",
-  function(event){
-
-    event.preventDefault();
-
-
-    const submitButton =
-      form.querySelector(".submit");
-
-
-    const originalText =
-      submitButton.textContent;
-
-
-    submitButton.disabled = true;
-
-    submitButton.textContent =
-      "ОТПРАВЛЯЕМ...";
-
-
-    const data =
-      new URLSearchParams();
-
-
-    data.append(
-      "name",
-      document.getElementById("name").value
-    );
-
-
-    data.append(
-      "phone",
-      document.getElementById("phone").value
-    );
-
-
-    data.append(
-      "service",
-      document.getElementById("service").value
-    );
-
-
-    data.append(
-      "date",
-      document.getElementById("date").value
-    );
-
-
-    data.append(
-      "time",
-      document.getElementById("time").value
-    );
-
-
-    data.append(
-      "comment",
-      document.getElementById("comment").value
-    );
-
-
-    fetch(
-      scriptURL,
-      {
-        method:"POST",
-        body:data,
-        mode:"no-cors"
-      }
-    )
-
-    .then(
-      function(){
-
-        formContainer.style.display =
-          "none";
-
-        success.style.display =
-          "block";
-
-
-        setTimeout(
-          function(){
-
-            closeModal();
-
-
-            setTimeout(
-              function(){
-
-                form.reset();
-
-                formContainer.style.display =
-                  "block";
-
-                success.style.display =
-                  "none";
-
-                submitButton.disabled =
-                  false;
-
-                submitButton.textContent =
-                  originalText;
-
-              },
-              300
-            );
-
-          },
-          3000
-        );
-
-      }
-    )
-
-    .catch(
-      function(){
-
-        submitButton.disabled =
-          false;
-
-        submitButton.textContent =
-          originalText;
-
-        alert(
-          "Не удалось отправить заявку. Попробуй ещё раз."
-        );
-
-      }
-    );
-
-  }
-);
-
-
-document
-  .querySelectorAll('a[href^="#"]')
-  .forEach(
-    function(link){
-
-      link.addEventListener(
-        "click",
-        function(event){
-
-          const targetId =
-            this.getAttribute("href");
-
-
-          if(
-            !targetId ||
-            targetId === "#"
-          ){
-
-            return;
-
-          }
-
-
-          const target =
-            document.querySelector(targetId);
-
-
-          if(!target){
-
-            return;
-
-          }
-
-
-          event.preventDefault();
-
-
-          target.scrollIntoView(
-            {
-              behavior:"smooth",
-              block:"start"
-            }
-          );
-
-        }
-      );
-
-    }
-  );
-
+target.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+});
+});
 </script>
 
 </body>
