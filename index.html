@@ -430,73 +430,108 @@ const dateInput=document.getElementById("date");
 const scriptURL="https://script.google.com/macros/s/AKfycbzB7xFjckpaCUFmst-kjYzfSJq0y_XLB2KvW1arxw15piYHcCWMcuZOIxcemFeIOfQ/exec";
 
 function openModal(event){
-if(event)event.preventDefault();
-modal.classList.add("active");
-@@ -459,55 +461,56 @@
-form.addEventListener("submit",function(event){
-event.preventDefault();
+  if(event) event.preventDefault();
+  modal.classList.add("active");
+  document.body.style.overflow="hidden";
+}
 
-const booking={
-name:document.getElementById("name").value,
-phone:document.getElementById("phone").value,
-service:document.getElementById("service").value,
-date:document.getElementById("date").value,
-time:document.getElementById("time").value,
-comment:document.getElementById("comment").value,
-created:new Date().toISOString()
-};
+function closeModal(){
+  modal.classList.remove("active");
+  document.body.style.overflow="";
+}
 
-const bookings=JSON.parse(localStorage.getItem("blackRoomBookings")||"[]");
-bookings.push(booking);
-localStorage.setItem("blackRoomBookings",JSON.stringify(bookings));
-const data=new URLSearchParams();
-
-data.append("name",document.getElementById("name").value);
-data.append("phone",document.getElementById("phone").value);
-data.append("service",document.getElementById("service").value);
-data.append("date",document.getElementById("date").value);
-data.append("time",document.getElementById("time").value);
-data.append("comment",document.getElementById("comment").value);
-
-fetch(scriptURL,{
-method:"POST",
-body:data,
-mode:"no-cors"
+bookingButtons.forEach(function(button){
+  button.addEventListener("click",openModal);
 });
 
-formContainer.style.display="none";
-success.style.display="block";
+closeModalButton.addEventListener("click",closeModal);
 
-setTimeout(function(){
-closeModal();
+modal.addEventListener("click",function(event){
+  if(event.target===modal){
+    closeModal();
+  }
+});
 
-setTimeout(function(){
-form.reset();
-formContainer.style.display="block";
-success.style.display="none";
-},300);
+document.addEventListener("keydown",function(event){
+  if(event.key==="Escape"){
+    closeModal();
+  }
+});
 
-},3000);
+const now=new Date();
+
+const today=
+  now.getFullYear()+"-"+
+  String(now.getMonth()+1).padStart(2,"0")+"-"+
+  String(now.getDate()).padStart(2,"0");
+
+dateInput.min=today;
+
+form.addEventListener("submit",function(event){
+  event.preventDefault();
+
+  const booking={
+    name:document.getElementById("name").value,
+    phone:document.getElementById("phone").value,
+    service:document.getElementById("service").value,
+    date:document.getElementById("date").value,
+    time:document.getElementById("time").value,
+    comment:document.getElementById("comment").value,
+    created:new Date().toISOString()
+  };
+
+  const bookings=JSON.parse(localStorage.getItem("blackRoomBookings")||"[]");
+  bookings.push(booking);
+  localStorage.setItem("blackRoomBookings",JSON.stringify(bookings));
+
+  const data=new URLSearchParams();
+
+  data.append("name",document.getElementById("name").value);
+  data.append("phone",document.getElementById("phone").value);
+  data.append("service",document.getElementById("service").value);
+  data.append("date",document.getElementById("date").value);
+  data.append("time",document.getElementById("time").value);
+  data.append("comment",document.getElementById("comment").value);
+
+  fetch(scriptURL,{
+    method:"POST",
+    body:data,
+    mode:"no-cors"
+  });
+
+  formContainer.style.display="none";
+  success.style.display="block";
+
+  setTimeout(function(){
+    closeModal();
+
+    setTimeout(function(){
+      form.reset();
+      formContainer.style.display="block";
+      success.style.display="none";
+    },300);
+
+  },3000);
 });
 
 document.querySelectorAll('a[href^="#"]').forEach(function(link){
-link.addEventListener("click",function(event){
+  link.addEventListener("click",function(event){
 
-const targetId=this.getAttribute("href");
+    const targetId=this.getAttribute("href");
 
-if(!targetId||targetId==="#")return;
+    if(!targetId||targetId==="#")return;
 
-const target=document.querySelector(targetId);
+    const target=document.querySelector(targetId);
 
-if(!target)return;
+    if(!target)return;
 
-event.preventDefault();
+    event.preventDefault();
 
-target.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
-});
+    target.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+  });
 });
 </script>
 
