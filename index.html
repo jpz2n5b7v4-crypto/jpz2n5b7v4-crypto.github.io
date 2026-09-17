@@ -463,6 +463,17 @@ event.preventDefault();
 
 const data=new URLSearchParams();
 
+form.addEventListener("submit",function(event){
+event.preventDefault();
+
+const submitButton=form.querySelector(".submit");
+const originalText=submitButton.textContent;
+
+submitButton.disabled=true;
+submitButton.textContent="ОТПРАВЛЯЕМ...";
+
+const data=new URLSearchParams();
+
 data.append("name",document.getElementById("name").value);
 data.append("phone",document.getElementById("phone").value);
 data.append("service",document.getElementById("service").value);
@@ -474,8 +485,8 @@ fetch(scriptURL,{
 method:"POST",
 body:data,
 mode:"no-cors"
-});
-
+})
+.then(function(){
 formContainer.style.display="none";
 success.style.display="block";
 
@@ -486,9 +497,17 @@ setTimeout(function(){
 form.reset();
 formContainer.style.display="block";
 success.style.display="none";
+submitButton.disabled=false;
+submitButton.textContent=originalText;
 },300);
 
 },3000);
+})
+.catch(function(){
+submitButton.disabled=false;
+submitButton.textContent=originalText;
+alert("Не удалось отправить заявку. Попробуй ещё раз.");
+});
 });
 
 document.querySelectorAll('a[href^="#"]').forEach(function(link){
