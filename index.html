@@ -427,6 +427,8 @@ const formContainer=document.getElementById("formContainer");
 const success=document.getElementById("success");
 const dateInput=document.getElementById("date");
 
+const scriptURL="https://script.google.com/macros/s/AKfycbzB7xFjckpaCUFmst-kjYzfSJq0y_XLB2KvW1arxw15piYHcCWMcuZOIxcemFeIOfQ/exec";
+
 function openModal(event){
 if(event)event.preventDefault();
 modal.classList.add("active");
@@ -459,19 +461,20 @@ dateInput.min=today;
 form.addEventListener("submit",function(event){
 event.preventDefault();
 
-const booking={
-name:document.getElementById("name").value,
-phone:document.getElementById("phone").value,
-service:document.getElementById("service").value,
-date:document.getElementById("date").value,
-time:document.getElementById("time").value,
-comment:document.getElementById("comment").value,
-created:new Date().toISOString()
-};
+const data=new URLSearchParams();
 
-const bookings=JSON.parse(localStorage.getItem("blackRoomBookings")||"[]");
-bookings.push(booking);
-localStorage.setItem("blackRoomBookings",JSON.stringify(bookings));
+data.append("name",document.getElementById("name").value);
+data.append("phone",document.getElementById("phone").value);
+data.append("service",document.getElementById("service").value);
+data.append("date",document.getElementById("date").value);
+data.append("time",document.getElementById("time").value);
+data.append("comment",document.getElementById("comment").value);
+
+fetch(scriptURL,{
+method:"POST",
+body:data,
+mode:"no-cors"
+});
 
 formContainer.style.display="none";
 success.style.display="block";
