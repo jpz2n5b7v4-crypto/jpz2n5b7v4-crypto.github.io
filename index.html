@@ -461,11 +461,6 @@ dateInput.min=today;
 form.addEventListener("submit",function(event){
 event.preventDefault();
 
-const data=new URLSearchParams();
-
-form.addEventListener("submit",function(event){
-event.preventDefault();
-
 const submitButton=form.querySelector(".submit");
 const originalText=submitButton.textContent;
 
@@ -507,7 +502,6 @@ submitButton.textContent=originalText;
 submitButton.disabled=false;
 submitButton.textContent=originalText;
 alert("Не удалось отправить заявку. Попробуй ещё раз.");
-});
 });
 
 document.querySelectorAll('a[href^="#"]').forEach(function(link){
